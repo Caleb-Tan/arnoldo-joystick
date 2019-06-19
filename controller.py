@@ -12,20 +12,35 @@ MOSI = 24
 CS   = 25
 mcp = Adafruit_MCP3008.MCP3008(clk=CLK, cs=CS, miso=MISO, mosi=MOSI)
 
-tts = Tts()
-
-# joystick area constraints
-deadzone_dist = 150**2
-max_x = 100
-max_y = 100
+class Controller:
+    def __init__(self):
+        self.deadzone_dist = 150**2
+        self.max_x_dist = 75
+        self.max_y_dist = 75
+        self.init_x = mcp.read_adc(1)
+        self.init_y = mcp.read_adc(0)
+        self.tts = Tts()
+        self.in_zone = True
+    
+    def check_dist(self, x, y):
+        x = x - self.init_x
+        y = y - self.init_y
+        center_dist = (x**2) + (y**2)
+        if center_dist > self.deadzone_dist and self.in_zone:
+            if (-self.max_x_dist < x < self.max_x_dist):
+                self.tts.handle_action(0) if y < 0 else self.tts.handle_action(2)
+                self.in_zone = False
+            elif (-self.max_y_dist < y < self.max_y_dist):
+                self.tts.handle_action(1) if x < 0 else self.tts.handle_action(3)
+                self.in_zone = False
+        elif center_dist < self.deadzone_dist:
+            self.in_zone = True
 
 # Main program loop.
-while True:
-    x = int(mcp.read_adc(1))-512
-    y = int(mcp.read_adc(0))-512
-    center_dist = (x**2) + (y**2)
-    if center_dist > deadzone_dist:
-        if x > 0:
-            print ("yee")
-    print(str(x) + " | " + str(y))
-    time.sleep(0.1)
+if __name__ == "__main__":
+    c = Controller()
+    while True:
+        x = int(mcp.read_adc(1))
+        y = int(mcp.read_adc(0))
+        c.check_dist(x, y)
+        time.sleep(0.1)
