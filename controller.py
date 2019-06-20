@@ -31,6 +31,8 @@ class Controller:
     def check_vals(self, x, y, n):
         x = x - self.init_x
         y = y - self.init_y
+        print(x)
+        print(y)
 	    #print(str(x) + " | " + str(y))
         # if n > self.pressure_cutoff and self.in_zone:
         #     self.is_pressed = True
