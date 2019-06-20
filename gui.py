@@ -3,6 +3,23 @@ from tkinter import *
 from controller import Controller
 
 
+
+def run_loop(self):
+    values = c.run()
+    draw_joystick(values[0], values[1], values[2])
+
+def draw_joystick(self, x, y, n):
+    draw.delete(js_oval_id)
+    print(str(x) + " | " + str(y))
+    x = 0 if x < 0 else x
+    x = 1023 if x > 1023 else x
+    y = 0 if y < 0 else y
+    y = 1023 if y > 1023 else y
+    x = (float(x)/1023)*js_box_width
+    y = (float(y)/1023)*window_height
+    # print(str(x) + " | " + str(y))
+    js_oval_id = draw.oval(x-js, y-js, x+js, y+js,color="blue", outline=False)
+    
 c = Controller()
 window_width = 900
 window_height = int(window_width*(2/3))
@@ -27,19 +44,3 @@ draw.line(0, int(window_height/2), js_box_width, int(window_height/2), color="re
 js_oval_id = draw.oval(int(js_box_width/2)-js, int(window_height/2)-js, int(js_box_width/2)+js, int(window_height/2)+js, color="blue", outline=False)
 draw.repeat(100, run_loop)
 app.display()
-
-def run_loop(self):
-    values = c.run()
-    draw_joystick(values[0], values[1], values[2])
-
-def draw_joystick(self, x, y, n):
-    draw.delete(js_oval_id)
-    print(str(x) + " | " + str(y))
-    x = 0 if x < 0 else x
-    x = 1023 if x > 1023 else x
-    y = 0 if y < 0 else y
-    y = 1023 if y > 1023 else y
-    x = (float(x)/1023)*js_box_width
-    y = (float(y)/1023)*window_height
-    # print(str(x) + " | " + str(y))
-    js_oval_id = draw.oval(x-js, y-js, x+js, y+js,color="blue", outline=False)
