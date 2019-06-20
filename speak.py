@@ -10,4 +10,5 @@ def speak(phrases, wpm):
         engine.say(phrase)
     engine.runAndWait() 
 
+print("hello")
 speak(sys.argv[1].split(","), int(sys.argv[2]))

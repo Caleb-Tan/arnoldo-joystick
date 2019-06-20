@@ -29,12 +29,8 @@ class Controller:
         return int(math.sqrt(self.deadzone_dist))
 
     def check_vals(self, x, y, n):
-        print(self.init_x)
-        print(self.init_y)
         x = x - self.init_x
         y = y - self.init_y
-        print(x)
-        print(y)
 	    #print(str(x) + " | " + str(y))
         # if n > self.pressure_cutoff and self.in_zone:
         #     self.is_pressed = True
