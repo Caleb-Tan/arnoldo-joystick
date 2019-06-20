@@ -36,6 +36,7 @@ class Controller:
         #     self.is_pressed = True
         center_dist = (x**2) + (y**2)
         if center_dist > self.deadzone_dist and self.in_zone:
+            print("hello")
             if (-self.max_x_dist < x < self.max_x_dist):
                 self.tts.handle_action(0) if y < 0 else self.tts.handle_action(2)
                 self.in_zone = False

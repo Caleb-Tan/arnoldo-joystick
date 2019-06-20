@@ -38,6 +38,7 @@ class Tts:
     6 = go back
     '''
     def handle_action(self, key):
+        print(key)
         if key == 5:
             self.play_sentence()
         elif key == 6:
