@@ -45,18 +45,12 @@ class Controller:
                 self.in_zone = False
         elif center_dist < self.deadzone_dist:
             self.in_zone = True
-
-# Main program loop.
-if __name__ == "__main__":
-    c = Controller()
-    print("no")
-    g = Gui()
-    print("yes")
-    while True:
+    
+    def run(self):
         x = int(mcp.read_adc(1))
         y = int(mcp.read_adc(0))
         n = int(mcp.read_adc(6))
         print(str(x) + " | " + str(y))
-        c.check_vals(x, y, n)
-        g.draw_joystick(x, y, n)
-        time.sleep(0.1)
+        self.check_vals(x, y, n)
+        return [x, y, n]
+

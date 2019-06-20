@@ -1,6 +1,6 @@
 from guizero import App, Box, Text, Drawing
 from tkinter import *
-
+from controller import Controller
 
 class Gui:
     def __init__(self):
@@ -10,6 +10,7 @@ class Gui:
         c_box_width = window_width - self.js_box_width
         self.js = 30
         dz = 100
+        self.c = Controller()
 
         app = App(width=window_width, height=self.window_height, title="Speech Synth")
         joystick_box = Box(app, width=self.js_box_width, height="fill", align="left", border=True)
@@ -26,9 +27,12 @@ class Gui:
         # joystick oval
         self.js_oval_id = self.draw.oval(int(self.js_box_width/2)-self.js, int(self.window_height/2)-self.js, int(self.js_box_width/2)+self.js, int(self.window_height/2)+self.js, color="blue", outline=False)
         self.draw.oval(0,0,5,5)
-        print("ho")
+        self.draw.repeat(100, run_loop)
         app.display()
-        print("bro")
+
+    def run_loop(self):
+        values = c.run()
+        self.draw_joystick(values[0], values[1], values[2])
 
     def draw_joystick(self, x, y, n):
         self.draw.delete(self.js_oval_id)
