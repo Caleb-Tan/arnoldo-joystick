@@ -50,7 +50,7 @@ class Tts:
                 self.select_letter(key)
     
     def speak(self, sentence, wpm=60):
-        subprocess.run(['espeak', f'-s {wpm}', sentence]])
+        subprocess.run(['espeak', '-s' + str(wpm), sentence])
 
 
 
