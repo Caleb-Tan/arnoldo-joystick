@@ -17,19 +17,19 @@ class Gui:
         joystick_box.set_border(2, "black")
         control_box.set_border(2, "black")
         # drawing joystick grid
-        draw = Drawing(joystick_box, width="fill", height="fill")
+        self.draw = Drawing(joystick_box, width="fill", height="fill")
         # deadzone circle
-        draw.oval(int(self.js_box_width/2)-dz, int(self.window_height/2)-dz, int(self.js_box_width/2)+dz, int(self.window_height/2)+dz, color="white", outline=True, outline_color="red")
+        self.draw.oval(int(self.js_box_width/2)-dz, int(self.window_height/2)-dz, int(self.js_box_width/2)+dz, int(self.window_height/2)+dz, color="white", outline=True, outline_color="red")
         # x and y axis lines
-        draw.line(int(self.js_box_width/2), 0, int(self.js_box_width/2), self.window_height, color="red", width=2) 
-        draw.line(0, int(self.window_height/2), self.js_box_width, int(self.window_height/2), color="red", width=2)
+        self.draw.line(int(self.js_box_width/2), 0, int(self.js_box_width/2), self.window_height, color="red", width=2) 
+        self.draw.line(0, int(self.window_height/2), self.js_box_width, int(self.window_height/2), color="red", width=2)
         # joystick oval
         js_oval_id = draw.oval(int(self.js_box_width/2)-self.js, int(self.window_height/2)-self.js, int(self.js_box_width/2)+self.js, int(self.window_height/2)+self.js, color="blue", outline=False)
-        draw.oval(0,0,5,5)
+        self.draw.oval(0,0,5,5)
         app.display()
 
     def draw_joystick(self, x, y, n):
-        draw.delete(js_oval_id)
+        self.draw.delete(js_oval_id)
         x = x + 512
         x = 0 if x < 0 else x
         y = y + 512
