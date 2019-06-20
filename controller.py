@@ -49,6 +49,6 @@ class Controller:
         x = int(mcp.read_adc(1))
         y = int(mcp.read_adc(0))
         n = int(mcp.read_adc(6))
-        self.check_vals(x, y, n)
+        self.check_vals(x-125, y-125, n)
         return [x, y, n]
 
