@@ -36,6 +36,7 @@ class Gui:
 
     def draw_joystick(self, x, y, n):
         self.draw.delete(self.js_oval_id)
+        print(str(x) + " | " + str(y))
         x = x + 512
         x = 0 if x < 0 else x
         x = 1023 if x > 1023 else x
