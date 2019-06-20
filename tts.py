@@ -18,18 +18,18 @@ class Tts:
     def select_row(self, key):
         self.current_row = key
         self.wpm = 110
-        self.speak(self.code[key][0] + ". too." + self.code[key][4])
+        self.speak(self.code[key][0] + ", too, " + self.code[key][4])
         self.wpm = 90
 
     def select_letter(self, key):
         letter = self.code[self.current_row][key]
         self.current_row = -1
         self.sentence += letter[0]
-        self.speak([letter])
+        self.speak(letter)
         
     def play_sentence(self):
         sentence = " ".join(wordninja.split(self.sentence))
-        self.speak([sentence])
+        self.speak(sentence)
         self.sentence = ""
         self.current_row = -1
 
