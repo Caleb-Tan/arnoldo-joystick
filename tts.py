@@ -1,4 +1,4 @@
-import commands
+import subprocess
 import threading
 import wordninja
 import timeit
@@ -52,5 +52,5 @@ class Tts:
     def speak(self, sentence):
         print(sentence)
         # call(["python3", "speak.py", ",".join(sentence), str(self.wpm)])
-        # t = threading.Thread(target=lambda: call(["python3", "speak.py", ",".join(sentence), str(self.wpm)])).start()
-        t = threading.Thread(target=lambda: commands.getstatusoutput("python3 speak.py" + ",".join(sentence) + str(self.wpm))).start()
+        t = threading.Thread(target=lambda: subprocess.run(["python3", "speak.py", ",".join(sentence), str(self.wpm)])).start()
+        # t = threading.Thread(target=lambda: ).start()
