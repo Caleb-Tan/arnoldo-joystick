@@ -29,8 +29,8 @@ class Controller:
         return int(math.sqrt(self.deadzone_dist))
 
     def check_vals(self, x, y, n):
-        x = x - self.init_x
-        y = y - self.init_y
+        x = x - self.init_x-140
+        y = y - self.init_y-140
         print(x)
         print(y)
 	    #print(str(x) + " | " + str(y))
