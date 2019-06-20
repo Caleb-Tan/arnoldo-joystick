@@ -2,6 +2,7 @@ import sys
 import pyttsx3
 
 def speak(phrases, wpm):
+    print (phrases)
     engine.setProperty("rate", wpm)
     for phrase in phrases:
         engine.say(phrase)

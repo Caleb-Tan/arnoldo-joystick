@@ -43,7 +43,7 @@ class Gui:
         y = 1023 if y > 1023 else y
         x = (float(x)/1023)*self.js_box_width
         y = (float(y)/1023)*self.window_height
-        print(str(x) + " | " + str(y))
+        # print(str(x) + " | " + str(y))
         self.js_oval_id = self.draw.oval(x-self.js, y-self.js, x+self.js, y+self.js)
 
 if __name__ == "__main__":
