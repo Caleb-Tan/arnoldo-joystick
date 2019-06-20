@@ -45,3 +45,5 @@ class Gui:
         print(str(x) + " | " + str(y))
         self.js_oval_id = self.draw.oval(x-self.js, y-self.js, x+self.js, y+self.js)
 
+if __name__ == "__main__":
+    g = Gui()
