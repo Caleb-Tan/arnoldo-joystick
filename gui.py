@@ -3,12 +3,7 @@ from tkinter import *
 from controller import Controller
 
 
-
-def run_loop(self):
-    values = c.run()
-    draw_joystick(values[0], values[1], values[2])
-
-def draw_joystick(self, x, y, n):
+def draw_joystick(x, y, n):
     draw.delete(js_oval_id)
     print(str(x) + " | " + str(y))
     x = 0 if x < 0 else x
@@ -19,7 +14,11 @@ def draw_joystick(self, x, y, n):
     y = (float(y)/1023)*window_height
     # print(str(x) + " | " + str(y))
     js_oval_id = draw.oval(x-js, y-js, x+js, y+js,color="blue", outline=False)
-    
+
+def run_loop():
+    values = c.run()
+    draw_joystick(values[0], values[1], values[2])
+
 c = Controller()
 window_width = 900
 window_height = int(window_width*(2/3))
