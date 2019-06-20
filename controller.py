@@ -19,8 +19,8 @@ class Controller:
         self.pressure_cutoff = 1023
         self.max_x_dist = 75
         self.max_y_dist = 75
-        self.init_x = mcp.read_adc(1)
-        self.init_y = mcp.read_adc(0)
+        self.init_x = mcp.read_adc(1)-140
+        self.init_y = mcp.read_adc(0)-140
         self.tts = Tts()
         self.in_zone = True
         self.is_pressed = False
@@ -29,8 +29,10 @@ class Controller:
         return int(math.sqrt(self.deadzone_dist))
 
     def check_vals(self, x, y, n):
-        x = x - self.init_x-140
-        y = y - self.init_y-140
+        print(self.init_x)
+        print(self.init_y)
+        x = x - self.init_x
+        y = y - self.init_y
         print(x)
         print(y)
 	    #print(str(x) + " | " + str(y))
@@ -38,7 +40,6 @@ class Controller:
         #     self.is_pressed = True
         center_dist = (x**2) + (y**2)
         if center_dist > self.deadzone_dist and self.in_zone:
-            print("hello")
             if (-self.max_x_dist < x < self.max_x_dist):
                 self.tts.handle_action(0) if y < 0 else self.tts.handle_action(2)
                 self.in_zone = False
