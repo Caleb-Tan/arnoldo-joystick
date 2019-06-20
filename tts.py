@@ -50,5 +50,5 @@ class Tts:
     
     def speak(self, sentence):
         print(sentence)
-        t = threading.Thread(target=lambda say: call(["python3", "speak.py", sentence, self.wpm])).start()
+        t = threading.Thread(target=lambda: call(["python3", "speak.py", sentence, self.wpm])).start()
         
