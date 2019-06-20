@@ -46,9 +46,9 @@ class Controller:
             self.in_zone = True
     
     def run(self):
-        x = int(mcp.read_adc(1))
-        y = int(mcp.read_adc(0))
+        x = int(mcp.read_adc(1))-140
+        y = int(mcp.read_adc(0))-140
         n = int(mcp.read_adc(6))
-        self.check_vals(x-125, y-125, n)
+        self.check_vals(x, y, n)
         return [x, y, n]
 
