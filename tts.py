@@ -1,8 +1,6 @@
-import subprocess
+from subprocess import call
 import threading
-import time
 import wordninja
-import os
 
 class Tts:
     code = [["A", "B", "C", "D", "E"],
@@ -14,22 +12,23 @@ class Tts:
     def __init__(self):
         self.sentence = ""
         self.current_row = -1
+        self.wpm = 90
         
     def select_row(self, key):
         self.current_row = key
-        self.speak(self.code[key][0], 110)
-        self.speak(" too ")
-        self.speak(self.code[key][4], 110)
+        self.wpm = 110
+        self.speak([self.code[key][0], "too", self.code[key][4])
+        self.wpm = 90
 
     def select_letter(self, key):
         letter = self.code[self.current_row][key]
         self.current_row = -1
         self.sentence += letter
-        self.speak(letter)
+        self.speak([letter])
         
     def play_sentence(self):
         sentence = " ".join(wordninja.split(self.sentence))
-        self.speak(sentence)
+        self.speak([sentence])
         self.sentence = ""
         self.current_row = -1
 
@@ -49,8 +48,7 @@ class Tts:
             else:
                 self.select_letter(key)
     
-    def speak(self, sentence, wpm=60):
-        subprocess.run(['espeak', '-s' + str(wpm), sentence])
-
-
-
+    def speak(self, sentence):
+        print(sentence)
+        t = threading.Thread(target=lambda say: call(["python3", "speak.py", sentence, self.wpm])).start()
+        
