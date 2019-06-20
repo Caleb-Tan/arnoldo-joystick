@@ -24,7 +24,7 @@ class Gui:
         draw.line(int(self.js_box_width/2), 0, int(self.js_box_width/2), self.window_height, color="red", width=2) 
         draw.line(0, int(self.window_height/2), self.js_box_width, int(self.window_height/2), color="red", width=2)
         # joystick oval
-        js_oval_id = draw.oval(int(self.js_box_width/2)-js, int(self.window_height/2)-js, int(self.js_box_width/2)+js, int(self.window_height/2)+js, color="blue", outline=False)
+        js_oval_id = draw.oval(int(self.js_box_width/2)-self.js, int(self.window_height/2)-self.js, int(self.js_box_width/2)+self.js, int(self.window_height/2)+self.js, color="blue", outline=False)
         draw.oval(0,0,5,5)
         app.display()
 
