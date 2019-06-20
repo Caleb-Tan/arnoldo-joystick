@@ -9,4 +9,6 @@ def speak(phrases, wpm):
     engine.runAndWait() 
 
 engine = init_engine()
+print(sys.argv[1])
+print(sys.argv[2])
 speak(sys.argv[1], sys.argv[2])
