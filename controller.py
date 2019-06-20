@@ -49,7 +49,9 @@ class Controller:
 # Main program loop.
 if __name__ == "__main__":
     c = Controller()
+    print("no")
     g = Gui()
+    print("yes")
     while True:
         x = int(mcp.read_adc(1))
         y = int(mcp.read_adc(0))

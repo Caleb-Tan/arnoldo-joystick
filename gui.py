@@ -26,7 +26,9 @@ class Gui:
         # joystick oval
         self.js_oval_id = self.draw.oval(int(self.js_box_width/2)-self.js, int(self.window_height/2)-self.js, int(self.js_box_width/2)+self.js, int(self.window_height/2)+self.js, color="blue", outline=False)
         self.draw.oval(0,0,5,5)
+        print("ho")
         app.display()
+        print("bro")
 
     def draw_joystick(self, x, y, n):
         self.draw.delete(self.js_oval_id)
