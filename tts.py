@@ -50,5 +50,5 @@ class Tts:
                 self.select_letter(key)
     
     def speak(self, sentence):
-        print(sentence)
+        print(self.sentence)
         t = threading.Thread(target=lambda: subprocess.run(["espeak", sentence])).start()
