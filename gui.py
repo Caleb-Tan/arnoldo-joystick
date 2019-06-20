@@ -27,7 +27,7 @@ class Gui:
         # joystick oval
         self.js_oval_id = self.draw.oval(int(self.js_box_width/2)-self.js, int(self.window_height/2)-self.js, int(self.js_box_width/2)+self.js, int(self.window_height/2)+self.js, color="blue", outline=False)
         self.draw.oval(0,0,5,5)
-        self.draw.repeat(100, run_loop)
+        self.draw.repeat(100, self.run_loop)
         app.display()
 
     def run_loop(self):
