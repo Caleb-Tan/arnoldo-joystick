@@ -15,6 +15,8 @@ mcp = Adafruit_MCP3008.MCP3008(clk=CLK, cs=CS, miso=MISO, mosi=MOSI)
 
 class Controller:
     def __init__(self):
+        self.deadzone_dist_long = 100**2
+        self.deadzone_dist_short = 70**2
         self.deadzone_dist = 100**2
         self.pressure_cutoff = 1023
         self.max_x_dist = 75
@@ -36,6 +38,7 @@ class Controller:
         #     self.is_pressed = True
         center_dist = (x**2) + (y**2)
         if center_dist > self.deadzone_dist and self.in_zone:
+            self.deadzone_dist = self.deadzone_dist_short
             if (-self.max_x_dist < x < self.max_x_dist):
                 self.tts.handle_action(0) if y < 0 else self.tts.handle_action(2)
                 self.in_zone = False
@@ -43,6 +46,7 @@ class Controller:
                 self.tts.handle_action(1) if x < 0 else self.tts.handle_action(3)
                 self.in_zone = False
         elif center_dist < self.deadzone_dist:
+            self.deadzone_dist = self.deadzone_dist_long
             self.in_zone = True
     
     def run(self):
