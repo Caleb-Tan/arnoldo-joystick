@@ -17,7 +17,7 @@ class Tts:
     def select_row(self, key):
         self.current_row = key
         self.wpm = 110
-        self.speak([self.code[key][0], "too", self.code[key][4])
+        self.speak([self.code[key][0], "too", self.code[key][4]])
         self.wpm = 90
 
     def select_letter(self, key):
