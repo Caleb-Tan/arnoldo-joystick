@@ -31,7 +31,7 @@ class Gui:
         app.display()
 
     def run_loop(self):
-        values = c.run()
+        values = self.c.run()
         self.draw_joystick(values[0], values[1], values[2])
 
     def draw_joystick(self, x, y, n):
