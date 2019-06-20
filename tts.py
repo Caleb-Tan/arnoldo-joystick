@@ -49,6 +49,5 @@ class Tts:
                 self.select_letter(key)
     
     def speak(self, sentence):
-        print(sentence)
-        t = threading.Thread(target=lambda: call(["python3", "speak.py", sentence, self.wpm])).start()
+        t = threading.Thread(target=lambda: call(["python3", "speak.py", ",".join(sentence), self.wpm])).start()
         
