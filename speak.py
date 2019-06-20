@@ -1,10 +1,11 @@
 import sys
 import pyttsx3
 
-def say(s):
-    engine.say(s)
-    engine.runAndWait() #blocks
+def speak(phrases, wpm):
+    engine.setProperty("rate", wpm)
+    for phrase in phrases:
+        engine.say(phrase)
+    engine.runAndWait() 
 
 engine = init_engine()
-print(sys.argv)
-# say(str(sys.argv[1]))
+speak(sys.argv[1], sys.argv[2])
