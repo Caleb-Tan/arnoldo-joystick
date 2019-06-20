@@ -37,10 +37,8 @@ class Gui:
     def draw_joystick(self, x, y, n):
         self.draw.delete(self.js_oval_id)
         print(str(x) + " | " + str(y))
-        x = x + 512
         x = 0 if x < 0 else x
         x = 1023 if x > 1023 else x
-        y = y + 512
         y = 0 if y < 0 else y
         y = 1023 if y > 1023 else y
         x = (float(x)/1023)*self.js_box_width
