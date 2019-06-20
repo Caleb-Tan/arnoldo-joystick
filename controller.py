@@ -54,6 +54,7 @@ if __name__ == "__main__":
         x = int(mcp.read_adc(1))
         y = int(mcp.read_adc(0))
         n = int(mcp.read_adc(6))
+        print(str(x) + " | " + str(y))
         c.check_vals(x, y, n)
         g.draw_joystick(x, y, n)
         time.sleep(0.1)
