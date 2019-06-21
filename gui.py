@@ -29,6 +29,7 @@ def run_loop():
     values = c.run()
     draw_joystick(values[0], values[1], values[2])
 
+global draw_joystick
 def draw_joystick(x, y, n):
     draw.delete(js_oval_id)
     print(str(x) + " | " + str(y))
