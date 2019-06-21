@@ -23,7 +23,8 @@ draw.oval(int(js_box_width/2)-dz, int(window_height/2)-dz, int(js_box_width/2)+d
 draw.line(int(js_box_width/2), 0, int(js_box_width/2), window_height, color="red", width=2) 
 draw.line(0, int(window_height/2), js_box_width, int(window_height/2), color="red", width=2)
 # text
-
+draw.text(js_box_width/2, 50, "A, B, C, D, E", color="black", size=30, max_width=None)
+draw.text(js_box_width/2, window_height-50, "L, M, N, O, P", color="black", size=30, max_width=None)
 # joystick oval
 js_oval_id = draw.oval(int(js_box_width/2)-js, int(window_height/2)-js, int(js_box_width/2)+js, int(window_height/2)+js, color="blue", outline=False)
 
