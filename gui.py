@@ -23,10 +23,10 @@ draw.oval(int(js_box_width/2)-dz, int(window_height/2)-dz, int(js_box_width/2)+d
 draw.line(int(js_box_width/2), 0, int(js_box_width/2), window_height, color="red", width=2) 
 draw.line(0, int(window_height/2), js_box_width, int(window_height/2), color="red", width=2)
 # text
-draw.text(js_box_width/2-100, int(window_height/12), "A, B, C/K, D, E", color="black", size=20, max_width=None)
-draw.text(js_box_width/2-100, int(window_height*11/12), "L, M, N, O, P", color="black", size=20, max_width=None)
-draw.text(int(js_box_width/12), int(window_height/2), "F, G, H, I, J", color="black", size=20, max_width=None)
-draw.text(int(js_box_width*11/12), int(window_height/2), "Q, R, S, U, T", color="black", size=20, max_width=None)
+draw.text(js_box_width/2-75, int(window_height/12), "A, B, C, D, E", color="black", size=20, max_width=None)
+draw.text(js_box_width/2-75, int(window_height*11/12), "L, M, N, O, P", color="black", size=20, max_width=None)
+draw.text(int(js_box_width/12)-20, int(window_height/2), "F, G, H, I, J", color="black", size=20, max_width=None)
+draw.text(int(js_box_width*3/4), int(window_height/2), "Q, R, S, U, T", color="black", size=20, max_width=None)
 # joystick oval
 js_oval_id = draw.oval(int(js_box_width/2)-js, int(window_height/2)-js, int(js_box_width/2)+js, int(window_height/2)+js, color="blue", outline=False)
 
