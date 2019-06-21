@@ -1,4 +1,4 @@
-from guizero import App, Box, Text, Drawing
+from guizero import App, Box, Text, TextBox, Drawing
 from tkinter import *
 from controller import Controller
 
@@ -11,12 +11,16 @@ js = 30
 dz = 100
 
 app = App(width=window_width, height=window_height, title="Speech Synth")
-joystick_box = Box(app, width=js_box_width, height="fill", align="left", border=True)
-control_box = Box(app, width=c_box_width, height="fill", align="right", border=True)
-joystick_box.set_border(2, "black")
-control_box.set_border(2, "black")
+main_box = Box(app, width=js_box_width, height="fill", align="left", border=True)
+side_box = Box(app, width=c_box_width, height="fill", align="right", border=True)
+main_box.set_border(2, "black")
+side_box.set_border(2, "black")
+### side box graphics
+input_box = TextBox(side_box, align="top", multiline=True, height=50, width="fill")
+
+### main panel graphics
 # drawing joystick grid
-draw = Drawing(joystick_box, width="fill", height="fill")
+draw = Drawing(main_box, width="fill", height="fill")
 # deadzone circle
 draw.oval(int(js_box_width/2)-dz, int(window_height/2)-dz, int(js_box_width/2)+dz, int(window_height/2)+dz, color="white", outline=True, outline_color="red")
 # x and y axis lines
