@@ -1,9 +1,9 @@
 from guizero import App, Box, Text, TextBox, Drawing
 from tkinter import *
-from controller import Controller
+# from controller import Controller
 
-c = Controller()
-window_width = 900
+# c = Controller()
+window_width = 1800
 window_height = int(window_width*(2/3))
 js_box_width = window_height
 c_box_width = window_width - js_box_width
@@ -16,8 +16,7 @@ side_box = Box(app, width=c_box_width, height="fill", align="right", border=True
 main_box.set_border(2, "black")
 side_box.set_border(2, "black")
 ### side box graphics
-input_box = TextBox(side_box, align="top", multiline=True, height=50, width="fill")
-
+text_box = TextBox(side_box, align="top", multiline=True, height=5, width="fill")
 ### main panel graphics
 # drawing joystick grid
 draw = Drawing(main_box, width="fill", height="fill")
@@ -36,6 +35,7 @@ js_oval_id = draw.oval(int(js_box_width/2)-js, int(window_height/2)-js, int(js_b
 
 def run_loop():
     values = c.run()
+    text_box.value = values[3]
     draw_joystick(values[0], values[1], values[2])
 
 def draw_joystick(x, y, n):

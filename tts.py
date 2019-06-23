@@ -17,9 +17,7 @@ class Tts:
         
     def select_row(self, key):
         self.current_row = key
-        self.wpm = 110
         self.speak(self.code[key][0] + ", too, " + self.code[key][4])
-        self.wpm = 90
 
     def select_letter(self, key):
         letter = self.code[self.current_row][key]
@@ -32,6 +30,9 @@ class Tts:
         self.speak(sentence)
         self.sentence = ""
         self.current_row = -1
+
+    def get_sentence(self):
+        return self.sentence
 
     '''
     0-4 = rows/letters
@@ -51,4 +52,4 @@ class Tts:
     
     def speak(self, sentence):
         print(self.sentence)
-        t = threading.Thread(target=lambda: subprocess.run(["espeak", sentence])).start()
+        t = threading.Thread(target=lambda: subprocess.run(["espeak", sentence, "-s", str(self.wpm)])).start()

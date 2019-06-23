@@ -28,6 +28,9 @@ class Controller:
     def ret_deadzone(self):
         return int(math.sqrt(self.deadzone_dist))
 
+    def get_sentence(self):
+        return self.tts.get_sentence()
+
     def check_vals(self, x, y, n):
         x = x - self.init_x
         y = y - self.init_y
@@ -50,5 +53,5 @@ class Controller:
         y = int(mcp.read_adc(0))-140
         n = int(mcp.read_adc(6))
         self.check_vals(x, y, n)
-        return [x, y, n]
+        return [x, y, n, self.get_sentence()]
 
