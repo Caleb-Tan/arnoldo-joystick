@@ -13,7 +13,7 @@ class Tts:
     def __init__(self):
         self.sentence = ""
         self.current_row = -1
-        self.wpm = 90
+        self.wpm = 120
         
     def select_row(self, key):
         self.current_row = key
