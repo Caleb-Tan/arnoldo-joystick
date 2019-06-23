@@ -34,9 +34,8 @@ class Controller:
     def check_vals(self, x, y, n):
         x = x - self.init_x
         y = y - self.init_y
-	    #print(str(x) + " | " + str(y))
-        # if n > self.pressure_cutoff and self.in_zone:
-        #     self.is_pressed = True
+	    if n == 1023:
+            self.is_pressed = True
         center_dist = (x**2) + (y**2)
         if center_dist > self.deadzone_dist and self.in_zone:
             if (-self.max_x_dist < x < self.max_x_dist):
@@ -47,6 +46,7 @@ class Controller:
                 self.in_zone = False
         elif center_dist < self.deadzone_dist:
             self.in_zone = True
+        
     
     def run(self):
         x = int(mcp.read_adc(1))-140

@@ -4,7 +4,7 @@ from controller import Controller
 
 c = Controller()
 window_width = 1800
-window_height = int(window_width*(5/9))
+window_height = int(window_width*0.53)
 js_box_width = window_height
 c_box_width = window_width - js_box_width
 js = 30
@@ -16,8 +16,8 @@ side_box = Box(app, width=c_box_width, height="fill", align="right", border=True
 main_box.set_border(2, "black")
 side_box.set_border(2, "black")
 ### side box graphics
-text_box = TextBox(side_box, align="top", multiline=True, height=20, width="fill")
-text_box.text_size = 25
+text_box = TextBox(side_box, align="top", multiline=True, height=5, width="fill")
+text_box.text_size = 40
 ### main panel graphics
 # drawing joystick grid
 draw = Drawing(main_box, width="fill", height="fill")
