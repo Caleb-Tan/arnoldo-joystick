@@ -34,8 +34,6 @@ class Controller:
     def check_vals(self, x, y, n):
         x = x - self.init_x
         y = y - self.init_y
-	    if n == 1023:
-            self.is_pressed = True
         center_dist = (x**2) + (y**2)
         if center_dist > self.deadzone_dist and self.in_zone:
             if (-self.max_x_dist < x < self.max_x_dist):
