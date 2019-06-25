@@ -17,6 +17,7 @@ main_box.set_border(2, "black")
 side_box.set_border(2, "black")
 ### side box graphics
 text_box = TextBox(side_box, align="top", multiline=True, height=5, width="fill")
+text_box.text_size = 30
 ### main panel graphics
 # drawing joystick grid
 draw = Drawing(main_box, width="fill", height="fill")
