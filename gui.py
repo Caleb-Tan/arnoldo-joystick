@@ -3,8 +3,8 @@ from tkinter import *
 from controller import Controller
 
 c = Controller()
-window_width = 1760
-window_height = int(window_width*(5/9))
+window_width = 1800
+window_height = int(window_width*(0.513))
 js_box_width = window_height
 c_box_width = window_width - js_box_width
 js = 30
