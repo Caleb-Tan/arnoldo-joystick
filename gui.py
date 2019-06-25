@@ -8,7 +8,7 @@ window_height = int(window_width*(0.513))
 js_box_width = window_height
 c_box_width = window_width - js_box_width
 js = 30
-dz = 100
+dz = 125
 
 app = App(width=window_width, height=window_height, title="Speech Synth")
 main_box = Box(app, width=js_box_width, height="fill", align="left", border=True)
