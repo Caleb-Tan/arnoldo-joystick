@@ -18,8 +18,9 @@ side_box.set_border(2, "black")
 ### side box graphics
 text_box = TextBox(side_box, align="top", multiline=True, height=5, width="fill")
 text_box.text_size = 30
-pressure_text = TextBox(side_box, align="bottom", text="V, W, X, Y, Z", multiline=False, enabled=False)
-pressure_text.bg = "gray"
+pressure_text = TextBox(side_box, align="bottom", text="V, W, X, Y, Z", enabled=False)
+pressure_text.text_size = 30
+pressure_text.text_color = "black"
 ### main panel graphics
 # drawing joystick grid
 draw = Drawing(main_box, width="fill", height="fill")
