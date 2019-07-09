@@ -52,10 +52,10 @@ class Controller:
                 self.tts.handle_action(1) if x < 0 else self.tts.handle_action(3)
                 self.in_zone = False
         elif center_dist < self.deadzone_dist:
-            if not self.was_pressed and self.is_pressed:
+            if not self.was_pressed and self.is_pressed(n):
                 self.tts.handle_action(4)
                 self.was_pressed = True
-            elif self.was_pressed and not self.is_pressed:
+            elif self.was_pressed and not self.is_pressed(n):
                 self.was_pressed = False
             self.in_zone = True
         
