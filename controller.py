@@ -37,7 +37,7 @@ class Controller:
             self.pvals.pop(0)
         self.pvals.append(n)
         avg_pressure = float(sum(self.pvals)/len(self.pvals))
-        print avg_pressure
+        print(avg_pressure)
 
     def check_vals(self, x, y, n):
         x = x - self.init_x
