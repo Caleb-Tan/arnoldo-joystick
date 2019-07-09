@@ -16,7 +16,7 @@ mcp = Adafruit_MCP3008.MCP3008(clk=CLK, cs=CS, miso=MISO, mosi=MOSI)
 class Controller:
     def __init__(self):
         self.deadzone_dist = 125**2
-        self.pressure_threshold = 500
+        self.pressure_threshold = 600
         self.max_x_dist = 75
         self.max_y_dist = 75
         self.init_x = mcp.read_adc(1)
