@@ -52,6 +52,7 @@ class Controller:
                 self.tts.handle_action(1) if x < 0 else self.tts.handle_action(3)
                 self.in_zone = False
         elif center_dist < self.deadzone_dist:
+            print(self.reset_counter)
             if self.reset_counter > 5 and self.is_pressed(n):
                 self.tts.handle_action(4)
                 self.reset_counter = 0
