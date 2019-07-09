@@ -21,7 +21,7 @@ class Controller:
         self.init_x = mcp.read_adc(1)
         self.init_y = mcp.read_adc(0)
         self.previous_pressure = 0
-        self.p_threshold = 550
+        self.p_threshold = 600
         self.p_difference = 200
         self.pvals = []
         self.tts = Tts()
@@ -41,7 +41,7 @@ class Controller:
         if len(self.pvals) > 3:
             self.pvals.pop(0)
             difference = avg_pressure - self.previous_pressure
-            return difference >= self.p_difference and avg_pressure > self.p_threshold
+            return difference >= self.p_difference and avg_pressure > self.p_threshold and 1023 in self.pvals
         self.previous_pressure = avg_pressure
         return False
 
