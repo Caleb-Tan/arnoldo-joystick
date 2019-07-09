@@ -37,6 +37,7 @@ class Controller:
             self.pvals.pop(0)
         self.pvals.append(n)
         avg_pressure = float(sum(self.pvals)/len(self.pvals))
+        print (avg_pressure)
         return avg_pressure > self.pressure_threshold
 
     def check_vals(self, x, y, n):
@@ -52,7 +53,6 @@ class Controller:
                 self.tts.handle_action(1) if x < 0 else self.tts.handle_action(3)
                 self.in_zone = False
         elif center_dist < self.deadzone_dist:
-            print(self.is_pressed(n))
             if self.reset_counter > 10 and self.is_pressed(n):
                 self.tts.handle_action(4)
                 self.reset_counter = 0
