@@ -32,7 +32,7 @@ class Controller:
     def get_sentence(self):
         return self.tts.get_sentence()
 
-    def check_pressed(n):
+    def check_pressed(self, n):
         if len(self.pvals) > 4:
             self.pvals.pop(0)
         self.pvals.append(n)
