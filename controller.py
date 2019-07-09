@@ -16,7 +16,7 @@ mcp = Adafruit_MCP3008.MCP3008(clk=CLK, cs=CS, miso=MISO, mosi=MOSI)
 class Controller:
     def __init__(self):
         self.deadzone_dist = 125**2
-        self.pressure_threshold = 600
+        self.pressure_threshold = 575
         self.max_x_dist = 75
         self.max_y_dist = 75
         self.init_x = mcp.read_adc(1)
@@ -24,7 +24,7 @@ class Controller:
         self.pvals = []
         self.tts = Tts()
         self.in_zone = True
-        self.was_pressed = False
+        self.reset_counter = 0
 
     def ret_deadzone(self):
         return int(math.sqrt(self.deadzone_dist))
@@ -52,11 +52,11 @@ class Controller:
                 self.tts.handle_action(1) if x < 0 else self.tts.handle_action(3)
                 self.in_zone = False
         elif center_dist < self.deadzone_dist:
-            if not self.was_pressed and self.is_pressed(n):
+            if self.reset_counter > 5 and self.is_pressed(n):
                 self.tts.handle_action(4)
-                self.was_pressed = True
-            elif self.was_pressed and not self.is_pressed(n):
-                self.was_pressed = False
+                self.reset_counter = 0
+            elif self.reset_counter <= 5 or not self.is_pressed(n):
+                self.reset_counter += 1
             self.in_zone = True
         
     
