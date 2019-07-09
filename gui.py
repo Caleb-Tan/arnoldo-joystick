@@ -33,7 +33,7 @@ draw.line(0, int(window_height/2), js_box_width, int(window_height/2), color="re
 draw.text(js_box_width/2-75, int(window_height/12)-20, "A, B, C, D, E", color="black", size=30, max_width=None) # top
 draw.text(js_box_width/2-75, int(window_height*11/12), "L, M, N, O, P", color="black", size=30, max_width=None) # bottom
 draw.text(int(js_box_width/12)-30, int(window_height/2), "F, G, H, I, J", color="black", size=30, max_width=None) # left
-draw.text(int(js_box_width*7/10), int(window_height/2), "Q, R, S, U, T", color="black", size=30, max_width=None) # right
+draw.text(int(js_box_width*7/10), int(window_height/2), "Q, R, S, T, U", color="black", size=30, max_width=None) # right
 # joystick oval
 js_oval_id = draw.oval(int(js_box_width/2)-js, int(window_height/2)-js, int(js_box_width/2)+js, int(window_height/2)+js, color="blue", outline=False)
 
@@ -45,7 +45,6 @@ def run_loop():
 def draw_joystick(x, y, n):
     global js_oval_id, js_box_width, window_height, js
     draw.delete(js_oval_id)
-    print(str(x) + " | " + str(y))
     x = 0 if x < 0 else x
     x = 1023 if x > 1023 else x
     y = 0 if y < 0 else y

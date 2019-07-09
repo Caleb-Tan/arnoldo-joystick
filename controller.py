@@ -50,6 +50,7 @@ class Controller:
         x = int(mcp.read_adc(1))
         y = int(mcp.read_adc(0))
         n = int(mcp.read_adc(6))
+        print("X: " + str(x) + ", Y: " + str(y) + " - " + str(n))
         self.check_vals(x, y, n)
         return [x, y, n, self.get_sentence()]
 
