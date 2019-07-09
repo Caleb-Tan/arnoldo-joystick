@@ -16,7 +16,8 @@ mcp = Adafruit_MCP3008.MCP3008(clk=CLK, cs=CS, miso=MISO, mosi=MOSI)
 class Controller:
     def __init__(self):
         self.deadzone_dist = 125**2
-        self.pressure_threshold = 570
+        self.previous_pressure = 0
+        self.p_difference = 100
         self.max_x_dist = 75
         self.max_y_dist = 75
         self.init_x = mcp.read_adc(1)
@@ -33,12 +34,14 @@ class Controller:
         return self.tts.get_sentence()
 
     def is_pressed(self, n):
-        if len(self.pvals) > 5:
-            self.pvals.pop(0)
         self.pvals.append(n)
         avg_pressure = float(sum(self.pvals)/len(self.pvals))
-        print (avg_pressure)
-        return avg_pressure > self.pressure_threshold
+        if len(self.pvals) > 3:
+            self.pvals.pop(0)
+            difference = avg_pressure - self.previous_pressure
+            return difference >= self.p_difference
+        self.previous_pressure = avg_pressure
+        return False
 
     def check_vals(self, x, y, n):
         x = x - self.init_x
