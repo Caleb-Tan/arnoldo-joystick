@@ -7,10 +7,10 @@ import Adafruit_MCP3008
 
 
 # Software SPI configuration:
-CLK  = 2
-MISO = 3
-MOSI = 4
-CS   = 14
+CLK  = 18
+MISO = 23
+MOSI = 24
+CS   = 25
 mcp = Adafruit_MCP3008.MCP3008(clk=CLK, cs=CS, miso=MISO, mosi=MOSI)
 
 class Controller:
