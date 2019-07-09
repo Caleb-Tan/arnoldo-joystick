@@ -19,8 +19,8 @@ class Controller:
         self.pressure_cutoff = 1023
         self.max_x_dist = 75
         self.max_y_dist = 75
-        self.init_x = mcp.read_adc(1)-140
-        self.init_y = mcp.read_adc(0)-140
+        self.init_x = mcp.read_adc(1)
+        self.init_y = mcp.read_adc(0)
         self.tts = Tts()
         self.in_zone = True
         self.is_pressed = False
@@ -47,8 +47,8 @@ class Controller:
         
     
     def run(self):
-        x = int(mcp.read_adc(1))-140
-        y = int(mcp.read_adc(0))-140
+        x = int(mcp.read_adc(1))
+        y = int(mcp.read_adc(0))
         n = int(mcp.read_adc(6))
         self.check_vals(x, y, n)
         return [x, y, n, self.get_sentence()]
